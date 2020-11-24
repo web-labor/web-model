@@ -1,12 +1,14 @@
 <template>
     <div class="home-wraper">
-        <page-header title="主页"></page-header>
+        <page-header title="管理员">
+            <el-button type="primary" size="mini">新增</el-button>
+        </page-header>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Home',
+    name: 'AdminSet',
     components: {}
 }
 </script>
