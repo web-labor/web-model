@@ -14,3 +14,11 @@ export const getUrlParam = (name, url) => {
     if (!results[2]) return ''
     return decodeURIComponent(results[2].replace(/\+/g, ' '))
 }
+
+/**
+ * @desc 判断是否为FormData
+ * @param {*} param
+ */
+export const isFormData = (param) => {
+    return Object.prototype.toString.call(param) === '[object FormData]'
+}
