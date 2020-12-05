@@ -102,8 +102,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px !important;
-    // transition-duration: .5s;
+    width: 200px;
 }
 #app {
     height: 100%;
