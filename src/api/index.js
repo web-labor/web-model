@@ -11,7 +11,7 @@ const SERVICE_NAME = '/cloud-classroom-service'
 
 export class Api {
   /* 文件上传接口 */
-  uploadImage = (data) => {
+  uploadImage (data) {
     const formData = new window.FormData();
     formData.append('file', data.file);
     formData.append('networkId', undefined);
@@ -19,7 +19,7 @@ export class Api {
     return api.post(`/docrest/file/uploadfile`, formData)
   }
   
-  getBaseIndex = () => {
+  getBaseIndex () {
     return api.get(`${SERVICE_NAME}/base/index`)
   }
 }

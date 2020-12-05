@@ -19,6 +19,7 @@ export const withLoading = (option = {
     const originFunc = descriptor.value
     descriptor.value = async function (...args) {
       let loadingInstance = Loading.service({ text: option.message });
+      let res
       try {
         res = await originFunc.apply(this, args)
         loadingInstance.close()
