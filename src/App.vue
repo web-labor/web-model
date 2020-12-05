@@ -2,19 +2,19 @@
 import { systemName, logo } from '@/config/env'
 export default {
     name: 'app',
-    created() {},
+    created () {},
     computed: {
-        activeTitle() {
+        activeTitle () {
             return '/' + this.$route.path.split('/')[1]
         }
     },
-    data() {
+    data () {
         return {
             isCollapse: false
         }
     },
     methods: {
-        getItem(list) {
+        getItem (list) {
             if (!list) return []
             return list.map(i => {
                 // const index = this.independentList.indexOf(i.name)
@@ -53,7 +53,7 @@ export default {
         }
     },
     // eslint-disable-next-line no-unused-vars
-    render(h) {
+    render (h) {
         return (
             <el-container class="container">
                 <div class="aside">

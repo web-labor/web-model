@@ -21,14 +21,14 @@ export default {
             default: false
         }
     },
-    data() {
+    data () {
         return {}
     },
-    created() {},
-    mounted() {},
+    created () {},
+    mounted () {},
     computed: {},
     methods: {
-        goBack() {
+        goBack () {
             this.$router.push('/').catch(() => {
                 console.warn('it is ok!')
             })

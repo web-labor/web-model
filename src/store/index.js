@@ -8,17 +8,17 @@ export default new Vuex.Store({
         userInfo: {}
     },
     getters: {
-        userInfo(state) {
+        userInfo (state) {
             return state.userInfo
         }
     },
     mutations: {
-        SAVEUSERINFO(state, userInfo) {
+        SAVEUSERINFO (state, userInfo) {
             state.userInfo = userInfo
         }
     },
     actions: {
-        saveUserInfo(context, userInfo) {
+        saveUserInfo (context, userInfo) {
             context.commit('SAVEUSERINFO', userInfo)
         }
     },
