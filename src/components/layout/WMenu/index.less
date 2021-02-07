@@ -1,0 +1,39 @@
+.page-menu {
+  height: 100%;
+  .w-menu {
+    height: 100%;
+    background: #F8F9FB;
+    border: 0;
+    .el-menu-item {
+      border-left: 4px solid transparent;
+      background: #F8F9FB;
+    }
+    /deep/ .el-menu-item:hover {
+      background: #fff;
+    }
+    .el-menu-item:focus {
+      background-color: rgba(81, 79, 107, .1);
+    }
+    .el-menu-item.is-active {
+      border-left: 4px solid @--color-primary;
+      background: linear-gradient(90deg,rgba(64, 158, 255,.1),rgba(57,55,79,0) 50%) !important;
+    }
+    .is-opened {
+      background: #F8F9FB;
+    }
+    .el-submenu__title:hover {
+      background: rgba(81, 79, 107, .1);
+    }
+  }
+  /deep/ .el-menu {
+    background: #F8F9FB;
+  }
+  .iconfont {
+    font-family: "iconfont" !important;
+  }
+  .no-icon {
+    span {
+      padding-left: 9px;
+    }
+  }
+}

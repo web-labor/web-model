@@ -1,9 +1,7 @@
 <template>
-    <div class="home-wraper">
-        <page-header title="管理员">
-            <el-button type="primary" size="mini">新增</el-button>
-        </page-header>
-    </div>
+    <layout-page class="home-wraper">
+        管理员
+    </layout-page>
 </template>
 
 <script>

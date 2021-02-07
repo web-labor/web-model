@@ -1,27 +1,32 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-Vue.use(VueRouter)
+import Router from 'vue-router'
 
-const routes = [
-    {
-        path: '/home',
-        name: 'Home',
-        rname: '主页',
-        icon: 'el-icon-s-home',
-        component: Home
-    },
-    {
-        path: '/AdminSet',
-        name: 'AdminSet',
-        rname: '管理员设置',
-        icon: 'el-icon-user-solid',
-        component: () => import('@/views/AdminSet.vue')
-    }
-]
+Vue.use(Router)
 
-const router = new VueRouter({
-    routes
+const getPageConfig = () => {
+    const routes = [
+        // 自定义
+    ]
+
+    // 动态引入pages 必须是Pages结尾的路由名称
+    const pageModule = require.context('./pages', true, /\Pages$/)
+    pageModule.keys().forEach(key => {
+        routes.push(...pageModule(key).default)
+    })
+    return routes
+}
+
+const routers = new Router({
+    mode: 'hash',
+    routes: [
+        /** ************************* 首页及其相关页路由 ***************************************** **/
+        { path: '/', redirect: '/home' },
+        ...getPageConfig()
+    ]
 })
 
-export default router
+routers.beforeEach(async (to, from, next) => {
+    next()
+})
+
+export default routers

@@ -14,14 +14,14 @@ const StatusMap = {
     default: '未知错误'
 }
 
-const resError = (res) => {
+const resError = res => {
     Message({
         type: 'error',
         message: res.data.error || '网络超时'
     })
 }
 
-const errorHandle = (error) => {
+const errorHandle = error => {
     const status = error.response ? error.response.status : '600'
     switch (status) {
         case 404:

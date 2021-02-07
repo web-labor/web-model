@@ -1,0 +1,26 @@
+.w-table {
+  padding: 0 24px;
+  /deep/ .el-table {
+    margin-bottom: 20px;
+    .cell {
+      padding: 5px 0;
+      font-weight: 500;
+      font-size: 12px;
+      color: rgba(61, 70, 74, 1);
+    }
+  }
+  /deep/ .el-table--mini td, .el-table--mini th {
+    padding: 10px 0;
+  }
+  /deep/ .el-table__header {
+    th {
+      background: rgba(225, 234, 241, 1);
+      .mixin-base-norFont;
+      .cell {
+        .mixin-base-largeFont;
+        .mixin-base-boldFont;
+        line-height: 20px !important;
+      }
+    }
+  }
+}

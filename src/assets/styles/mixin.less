@@ -1,0 +1,25 @@
+.mixin-base-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.mixin-base-norFont(@color: rgba(74, 74, 74, 1)) {
+    font-size: 12px;
+    font-weight: 400;
+    color: @color;
+}
+
+.mixin-base--largeFont {
+    font-size: 14px;
+}
+
+.mixin-base-largeFont(@color: rgba(61, 70, 74, 1)){
+    font-size: 14px;
+    color: @color;
+}
+
+.mixin-base-boldFont(@color: rgba(61, 70, 74, 1)){
+    font-weight: 600;
+    color: @color;
+    font-family: "PingFangSC-Semibold";
+}

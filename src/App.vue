@@ -1,171 +1,99 @@
+<template>
+    <div id="app">
+        <el-container class="content">
+            <el-aside class="aside-wrap" width="auto">
+                <w-menu class="menu" :collapse="isCollapse">
+                    <h1>
+                        <img
+                            class="logo-img"
+                            :src="userInfo.logo || defaultProjectLogo"
+                            alt=""
+                        />
+                        <span v-show="!isCollapse">
+                            {{ $config.PROJECT_NAME_ZHCN }}
+                        </span>
+                    </h1>
+                </w-menu>
+            </el-aside>
+            <router-view></router-view>
+        </el-container>
+    </div>
+</template>
 <script>
-import { systemName, logo } from '@/config/env'
+import WMenu from '@/components/layout/WMenu'
+
 export default {
     name: 'app',
-    created () {},
+    data() {
+        return {}
+    },
+    created() {},
+    components: {
+        WMenu
+    },
     computed: {
-        activeTitle () {
+        activeTitle() {
             return '/' + this.$route.path.split('/')[1]
+        },
+        defaultProjectLogo() {
+            return require('./assets/logo.png')
+        },
+        getMenuCollapse() {
+            return this.isCollapse
+        },
+        isCollapse() {
+            return this.$store.state.system.menuCollapse
         }
     },
-    data () {
-        return {
-            isCollapse: false
-        }
-    },
-    methods: {
-        getItem (list) {
-            if (!list) return []
-            return list.map(i => {
-                // const index = this.independentList.indexOf(i.name)
-                // // 权限有交集则不过滤
-                // const intersection = this.allowList.filter(v =>
-                //     i.meta.permissions.includes(v)
-                // )
-                // if (
-                //     index !== -1 ||
-                //     intersection.length === 0 ||
-                //     (i.path === '/area' &&
-                //         this.getCurrentMode.level !== 'BRANCH')
-                // ) {
-                //     return null
-                // }
-
-                if (Array.isArray(i.children) && i.children.length) {
-                    return (
-                        <el-submenu index={i.path}>
-                            <template slot="title">
-                                {i.icon ? <i class={i.icon}></i> : ''}
-                                <span slot="title">{i.rname}</span>
-                            </template>
-                            {this.getItem(i.children)}
-                        </el-submenu>
-                    )
-                }
-
-                return (
-                    <el-menuItem index={i.path} key={i.name}>
-                        {i.icon ? <i class={i.icon}></i> : ''}
-                        <span slot="title">{i.rname}</span>
-                    </el-menuItem>
-                )
-            })
-        }
-    },
-    // eslint-disable-next-line no-unused-vars
-    render (h) {
-        return (
-            <el-container class="container">
-                <div class="aside">
-                    <div
-                        class={this.isCollapse ? 'fold icon' : 'unfold icon'}
-                        ref="title"
-                    >
-                        <img src={logo} />
-                        {!this.isCollapse ? (
-                            <div class="main-tile">{systemName}</div>
-                        ) : null}
-                        {this.isCollapse ? (
-                            <i
-                                class="collapse-bt el-icon-caret-right"
-                                onClick={() => {
-                                    this.isCollapse = !this.isCollapse
-                                }}
-                            ></i>
-                        ) : (
-                            <i
-                                class="collapse-bt el-icon-caret-left"
-                                onClick={() => {
-                                    this.isCollapse = !this.isCollapse
-                                }}
-                            ></i>
-                        )}
-                    </div>
-                    <el-menu
-                        default-active={this.activeTitle}
-                        class="el-menu-vertical-demo"
-                        router
-                        collapse={this.isCollapse}
-                    >
-                        {this.getItem(this.$router.options.routes)}
-                    </el-menu>
-                </div>
-                <el-container>
-                    <el-main class="main">
-                        <router-view></router-view>
-                    </el-main>
-                </el-container>
-            </el-container>
-        )
-    }
+    methods: {}
 }
 </script>
 <style lang="less" scoped>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-}
 #app {
-    height: 100%;
-    width: 100%;
-}
-.aside {
-    // width: 220px;
-    height: 100%;
-    background-color: rgb(255, 255, 255);
-    border-right: 1px solid #e1eaf1;
-    .fold {
-        width: 64px;
-        display: flex;
-        transition-duration: 0.5s;
-        justify-content: center !important;
-    }
-    .unfold {
-        width: 200px;
-        padding: 0 20px;
-        transition-duration: 0.5s;
-    }
-    .icon {
-        display: flex;
-        height: 56px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        justify-content: space-between;
-        align-items: center;
-        box-sizing: border-box;
-        img {
-            height: 30px;
-            width: 30px;
-        }
-        .main-tile {
-            line-height: 56px;
-            text-align: center;
-            min-width: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .collapse-bt {
-            cursor: pointer;
-        }
-    }
-}
-.container {
-    height: 100%;
-}
-.header {
-    height: 56px;
     position: relative;
-}
-/deep/ .el-header {
-    padding: 0;
-}
-/deep/ .el-main {
-    padding: 0;
-}
-.main {
-    // height: calc(100% - 61px);
-}
-/deep/ .el-menu {
-    border: none;
+    .header {
+        position: absolute;
+        width: 100%;
+        top: 0;
+    }
+    .content {
+        height: 100%;
+        .aside-wrap {
+            position: relative;
+            background: rgb(63, 61, 84);
+            h1 {
+                flex-shrink: 0;
+            }
+            .menu {
+                flex: 1;
+                overflow-y: auto;
+            }
+        }
+    }
+    /deep/ .el-menu:not(.el-menu--collapse) {
+        width: 220px;
+    }
+    h1 {
+        height: 60px;
+        background: #3f3d54;
+        font-size: 18px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 60px;
+        overflow: hidden;
+        .logo-img {
+            height: 36px;
+            vertical-align: middle;
+            margin: 0 14px;
+        }
+        .el-dropdown-link {
+            color: #fff;
+            cursor: pointer;
+            &:hover {
+                color: @--color-primary;
+            }
+        }
+    }
 }
 </style>

@@ -7,18 +7,20 @@
  * @desc http默认配置
  */
 
-import { isFormData } from '@/utils/helper'
+import { isFormData } from '@/service/utils.service'
 
 export default {
-  timeout: 1000 * 30,
-  headers: {
-    'Content-Type': 'application/jsoncharset=UTF-8',
-    Accept: 'application/json, image/jpeg'
-  },
-  transformRequest: [(data) => {
-    if (isFormData(data)) {
-      return data
-    }
-    return JSON.stringify(data)
-  }]
+    timeout: 1000 * 30,
+    headers: {
+        'Content-Type': 'application/jsoncharset=UTF-8',
+        Accept: 'application/json, image/jpeg'
+    },
+    transformRequest: [
+        data => {
+            if (isFormData(data)) {
+                return data
+            }
+            return JSON.stringify(data)
+        }
+    ]
 }
