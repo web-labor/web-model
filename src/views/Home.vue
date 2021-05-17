@@ -1,7 +1,7 @@
 <template>
-    <div class="home-wraper">
-        <page-header title="主页"></page-header>
-    </div>
+    <layout-page class="home-wraper">
+        1
+    </layout-page>
 </template>
 
 <script>

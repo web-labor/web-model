@@ -1,4 +1,4 @@
-(function () {
+;(function() {
     if (sessionStorage.getItem('store')) {
         // 从sessionStorage中取数据到vuex中
         this.$store.replaceState(
