@@ -3,7 +3,7 @@ const {
     name: PROJECT_NAME_EN
 } = require('./package.json')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-
+const path = require('paht')
 const en = 'dev'
 const envir = {
     dev: 'https://dev.kdweibo.cn',
@@ -56,9 +56,7 @@ module.exports = {
     pluginOptions: {
         'style-resources-loader': {
             preProcessor: 'less',
-            patterns: [
-                '/Users/wangbo/wang/study/project/web-model/src/assets/styles/index.less'
-            ]
+            patterns: [path.resolve(__dirname, './src/assets/styles/index.less')]
         }
     },
     productionSourceMap: false // 生产环境是否生成 sourceMap 文件
