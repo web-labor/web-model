@@ -1,7 +1,8 @@
 <template>
     <el-container class="layout-page">
         <el-header>
-            <layout-header />
+            <layout-header v-if="!$slots.header" />
+            <slot name="header" />
         </el-header>
         <el-main class="main-wrap">
             <div class="main-content">
