@@ -57,7 +57,5 @@ export default {
             cursor: pointer;
         }
     }
-    .options {
-    }
 }
 </style>

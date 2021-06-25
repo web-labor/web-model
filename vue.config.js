@@ -3,7 +3,7 @@ const {
     name: PROJECT_NAME_EN
 } = require('./package.json')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const path = require('paht')
+const path = require('path')
 const en = 'dev'
 const envir = {
     dev: 'https://dev.kdweibo.cn',
