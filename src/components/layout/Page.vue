@@ -28,10 +28,11 @@ export default {
         flex: 1;
     }
     .main-content {
-        height: 100%;
+        min-height: 100%;
         background: #fff;
         box-shadow: 0 1px 6px 0 rgba(49, 114, 149, 0.1);
         border-radius: 4px;
+        box-sizing: border-box;
     }
     .transitionRouter-enter-active,
     .transitionRouter-leave-active {
